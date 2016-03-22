@@ -1,0 +1,12 @@
+Domain\Model\Goal:
+    fields:
+        id:
+            type: string
+            id: true
+            strategy: NONE
+        name:
+            type: string
+        description:
+            type: string
+        level:
+            type: int

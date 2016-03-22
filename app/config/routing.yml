@@ -1,0 +1,23 @@
+goal_create:
+    type:     rest
+    prefix: /api/v1
+    resource: AppBundle\Controller\Goals\CreateController
+
+goal_read:
+    type:     rest
+    prefix: /api/v1
+    resource: AppBundle\Controller\Goals\ReadController
+
+goal_update:
+    type:     rest
+    prefix: /api/v1
+    resource: AppBundle\Controller\Goals\UpdateController
+
+goal_delete:
+    type:     rest
+    prefix: /api/v1
+    resource: AppBundle\Controller\Goals\DeleteController
+
+NelmioApiDocBundle:
+    resource: "@NelmioApiDocBundle/Resources/config/routing.yml"
+    prefix:   /api/doc

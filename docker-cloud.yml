@@ -1,0 +1,29 @@
+goals-web:
+    image: karolsojko/goals-api
+    volumes:
+        - /var/www/goals-api
+        - /etc/nginx/conf.d
+    working_dir: /var/www/goals-api
+    expose:
+        - "9000"
+    links:
+        - goals-db:db
+    restart: always
+goals-nginx:
+    image: nginx:1.9
+    volumes_from:
+        - goals-web
+    links:
+        - goals-web:web
+    ports:
+        - "80"
+    environment:
+        - VIRTUAL_HOST=your.domain.com
+    restart: always
+goals-db:
+    image: mongo:3.2
+    ports:
+        - "27017"
+    volumes:
+        - /mnt/sda1/var/lib/goals-api:/data/db
+    restart: always
