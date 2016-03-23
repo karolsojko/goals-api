@@ -41,7 +41,8 @@ Available Endpoints
 
 - `[GET] /api/v1/goals`
 - `[POST] /api/v1/goals`
-- `[DELETE] /api/v1/goals/:skillId`
+- `[DELETE] /api/v1/goals/:goalId`
+- `[PUT] /api/v1/goals/:goalId`
 
 
 Testing
