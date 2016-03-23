@@ -14,3 +14,6 @@ services:
     app.use_case.list_goals:
         class: Domain\UseCase\ListGoals
         arguments: ['@app.repository.goal']
+    app.use_case.update_goal:
+        class: Domain\UseCase\UpdateGoal
+        arguments: ['@app.repository.goal']
