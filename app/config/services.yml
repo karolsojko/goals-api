@@ -8,3 +8,6 @@ services:
     app.use_case.add_goal:
         class: Domain\UseCase\AddGoal
         arguments: ['@app.repository.goal']
+    app.use_case.remove_goal:
+        class: Domain\UseCase\RemoveGoal
+        arguments: ['@app.repository.goal']

@@ -6,5 +6,5 @@ interface Responder
 {
     public function goalSuccessfullyRemoved($id);
 
-    public function goalNotFound($argument1);
+    public function goalNotFound($id);
 }
