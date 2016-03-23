@@ -11,3 +11,6 @@ services:
     app.use_case.remove_goal:
         class: Domain\UseCase\RemoveGoal
         arguments: ['@app.repository.goal']
+    app.use_case.list_goals:
+        class: Domain\UseCase\ListGoals
+        arguments: ['@app.repository.goal']
