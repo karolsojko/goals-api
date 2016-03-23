@@ -8,21 +8,26 @@ class Goal
 {
     private $id;
     private $name;
+    private $icon;
     private $description;
     private $level;
 
-    public function __construct($name, $description, $level)
+    public function __construct($name, $description)
     {
         $uuid = Uuid::uuid4();
         $this->id = $uuid->toString();
         $this->name = $name;
         $this->description = $description;
-        $this->level = $level;
     }
 
     public function getId()
     {
         return $this->id;
+    }
+
+    public function setName($name)
+    {
+        $this->name = $name;
     }
 
     public function getName()
@@ -32,11 +37,26 @@ class Goal
 
     public function getDescription()
     {
-      return $this->description;
+        return $this->description;
+    }
+
+    public function setLevel($level)
+    {
+        $this->level = $level;
     }
 
     public function getLevel()
     {
-      return $this->level;
+        return $this->level;
+    }
+
+    public function setIcon($icon)
+    {
+        $this->icon = $icon;
+    }
+
+    public function getIcon()
+    {
+        return $this->icon;
     }
 }

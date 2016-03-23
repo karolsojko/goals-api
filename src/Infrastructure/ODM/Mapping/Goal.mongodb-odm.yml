@@ -6,6 +6,8 @@ Domain\Model\Goal:
             strategy: NONE
         name:
             type: string
+        icon:
+            type: string
         description:
             type: string
         level:
