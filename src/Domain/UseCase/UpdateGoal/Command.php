@@ -2,8 +2,6 @@
 
 namespace Domain\UseCase\UpdateGoal;
 
-use Domain\Model\Goal;
-
 class Command
 {
     private $id;
@@ -11,6 +9,7 @@ class Command
     private $description;
     private $icon;
     private $level;
+    private $tags;
 
     public function __construct($id)
     {
@@ -60,5 +59,15 @@ class Command
     public function getLevel()
     {
         return $this->level;
+    }
+
+    public function getTags()
+    {
+        return $this->tags;
+    }
+
+    public function setTags($tags)
+    {
+        $this->tags = $tags;
     }
 }

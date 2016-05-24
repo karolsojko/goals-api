@@ -22,6 +22,7 @@ class CreateController extends FOSRestController implements Responder
      *     {"name"="name", "dataType"="string", "required"=true, "description"="goal name"},
      *     {"name"="description", "dataType"="string", "required"=true, "description"="goal description"},
      *     {"name"="icon", "dataType"="string", "required"=false, "description"="goal icon url"},
+     *     {"name"="tags", "dataType"="string", "required"=false, "description"="goal tags"},
      *     {"name"="level", "dataType"="integer", "required"=false, "description"="goal level"}
      *   }
      * )
@@ -34,18 +35,22 @@ class CreateController extends FOSRestController implements Responder
         $description = $request->get('description');
         $icon = $request->get('icon');
         $level = $request->get('level');
+        $tags = $request->get('tags');
 
         if (empty($name) || empty($description)) {
-          throw new HttpException(400, 'Missing required parameters');
+            throw new HttpException(400, 'Missing required parameters');
         }
 
         $command = new Command($name, $description);
 
         if (!empty($icon)) {
-          $command->setIcon($icon);
+            $command->setIcon($icon);
         }
         if (!empty($level)) {
-          $command->setLevel($level);
+            $command->setLevel($level);
+        }
+        if (!empty($tags)) {
+            $command->setTags($tags);
         }
 
         $useCase->execute($command, $this);

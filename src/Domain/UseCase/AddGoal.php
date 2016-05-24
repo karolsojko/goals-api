@@ -21,6 +21,7 @@ class AddGoal
         $goal = new Goal($command->getName(), $command->getDescription());
         $goal->setIcon($command->getIcon());
         $goal->setLevel($command->getLevel());
+        $goal->setTags($command->getTags());
 
         $this->goalsRepository->add($goal);
 

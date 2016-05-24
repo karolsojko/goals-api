@@ -12,3 +12,5 @@ Domain\Model\Goal:
             type: string
         level:
             type: int
+        tags:
+            type: collection
