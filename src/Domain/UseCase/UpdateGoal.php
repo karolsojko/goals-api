@@ -36,6 +36,9 @@ class UpdateGoal
         if ($level = $command->getLevel()) {
             $goal->setLevel($level);
         }
+        if ($tags = $command->getTags()) {
+            $goal->setTags($tags);
+        }
 
         $this->goalsRepository->add($goal);
 

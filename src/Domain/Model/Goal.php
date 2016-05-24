@@ -11,6 +11,7 @@ class Goal
     private $icon;
     private $description;
     private $level;
+    private $tags;
 
     public function __construct($name, $description)
     {
@@ -63,5 +64,15 @@ class Goal
     public function getIcon()
     {
         return $this->icon;
+    }
+
+    public function getTags()
+    {
+        return $this->tags;
+    }
+
+    public function setTags($tags)
+    {
+        $this->tags = $tags;
     }
 }

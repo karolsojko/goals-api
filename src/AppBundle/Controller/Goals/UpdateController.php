@@ -21,37 +21,46 @@ class UpdateController extends FOSRestController implements Responder
      *     {"name"="name", "dataType"="string", "required"=false, "description"="goal name"},
      *     {"name"="description", "dataType"="string", "required"=false, "description"="goal description"},
      *     {"name"="icon", "dataType"="string", "required"=false, "description"="goal icon url"},
+     *     {"name"="tags", "dataType"="string", "required"=false, "description"="goal tags"},
      *     {"name"="level", "dataType"="integer", "required"=false, "description"="goal level"}
      *   }
      * )
      */
     public function putGoalsAction($id, Request $request)
     {
-      $useCase = $this->get('app.use_case.update_goal');
+        $useCase = $this->get('app.use_case.update_goal');
 
-      $name = $request->get('name');
-      $description = $request->get('description');
-      $icon = $request->get('icon');
-      $level = $request->get('level');
+        $name = $request->get('name');
+        $description = $request->get('description');
+        $icon = $request->get('icon');
+        $level = $request->get('level');
+        $tags = $request->get('tags');
 
-      $command = new Command($id);
+        $command = new Command($id);
 
-      if (!empty($name)) {
+        if (!empty($name)) {
         $command->setName($name);
-      }
-      if (!empty($description)) {
+        }
+        if (!empty($description)) {
         $command->setDescription($description);
-      }
-      if (!empty($icon)) {
+        }
+        if (!empty($icon)) {
         $command->setIcon($icon);
-      }
-      if (!empty($level)) {
+        }
+        if (!empty($level)) {
         $command->setLevel($level);
-      }
+        }
+        if (!empty($tags)) {
+            $tags = explode(',', $tags);
+            array_walk($tags, function (&$tag) {
+                $tag = strtolower(trim($tag));
+            });
+            $command->setTags($tags);
+        }
 
-      $useCase->execute($command, $this);
+        $useCase->execute($command, $this);
 
-      return $this->handleView($this->view);
+        return $this->handleView($this->view);
     }
 
     public function goalNotFound($id)
