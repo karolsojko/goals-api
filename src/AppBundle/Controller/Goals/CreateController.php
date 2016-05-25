@@ -50,6 +50,10 @@ class CreateController extends FOSRestController implements Responder
             $command->setLevel($level);
         }
         if (!empty($tags)) {
+            $tags = explode(',', $tags);
+            array_walk($tags, function (&$tag) {
+                $tag = strtolower(trim($tag));
+            });
             $command->setTags($tags);
         }
 
